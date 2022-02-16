@@ -37,5 +37,5 @@ jobs:
           docker pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           docker images
           docker create --name temp ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          docker cp temp:/* .
+          docker cp temp:/blob/* .
           ls 
