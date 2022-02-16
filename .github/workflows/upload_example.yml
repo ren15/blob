@@ -34,8 +34,6 @@ jobs:
           mkdir empty_dir
           cd empty_dir
           ls
-          docker pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          docker images
-          docker create --name temp ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          docker cp temp:/blob/* .
+          podman pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          podman cp ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}:/blob/data.txt .
           ls 
