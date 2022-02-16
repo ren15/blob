@@ -37,7 +37,7 @@ jobs:
 
       - name: try more slashes
         run: |
-          cat "\nMore data\n" >> data.txt
+          echo "\nMore data\n" >> data.txt
           bash upload.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}/sub1:${{ env.IMAGE_TAG }} data.txt
           mkdir empty_dir && cd epmty_dir
           bash ../download.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}/sub1:${{ env.IMAGE_TAG }} data.txt
