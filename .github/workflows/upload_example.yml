@@ -19,7 +19,7 @@ jobs:
 
       - name: Setup skopeo
         run: |
-          apt update && apt install -y skopeo
+          brew install skopeo
 
       - name: Login docker
         run: |
