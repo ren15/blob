@@ -36,4 +36,6 @@ jobs:
           ls
           nerdctl pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           nerdctl images
+          nerdctl create --name temp ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          nerdctl cp temp:/* .
           ls 
