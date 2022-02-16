@@ -31,9 +31,8 @@ jobs:
 
       - name: Test docker pull
         run: |
-          podman run docker://quay.io/skopeo/stable:latest copy --help
           mkdir empty_dir
           cd empty_dir
-          ls 
-          podman run docker://quay.io/skopeo/stable:latest copy docker://${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} docker_image_pulled
+          ls
+          nerdclt pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           ls 
