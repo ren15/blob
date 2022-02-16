@@ -36,3 +36,4 @@ jobs:
           ls
           bash ../download.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
           ls 
+          cat data.txt
