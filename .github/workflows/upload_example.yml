@@ -35,5 +35,5 @@ jobs:
           mkdir empty_dir
           cd empty_dir
           ls 
-          podman run docker://quay.io/skopeo/stable:latest copy ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} docker_image_pulled
+          podman run docker://quay.io/skopeo/stable:latest copy docker://${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} docker_image_pulled
           ls 
