@@ -34,5 +34,6 @@ jobs:
           mkdir empty_dir
           cd empty_dir
           ls
-          nerdclt pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          nerdctl pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          nerdctl images
           ls 
