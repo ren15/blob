@@ -33,3 +33,13 @@ jobs:
           bash ../download.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
           ls 
           cat data.txt
+          rm -rf ../empty_dir
+
+      - name: try more slashes
+        run: |
+          cat "\nMore data\n" >> data.txt
+          bash upload.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}/sub1:${{ env.IMAGE_TAG }} data.txt
+          mkdir empty_dir && cd epmty_dir
+          bash ../download.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}/sub1:${{ env.IMAGE_TAG }} data.txt
+          cat data.txt
+          
