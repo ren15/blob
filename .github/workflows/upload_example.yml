@@ -1,0 +1,30 @@
+name: upload_example
+on: push
+
+env:
+  IMAGE_REGISTRY: "ghcr.io"
+  REGISTRY_USER: "${{ github.repository_owner }}"
+  REGISTRY_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+  IMAGE_REPO: "ghcr.io/${{ github.repository_owner }}"
+  IMAGE_NAME: "blob_example"
+  DEBIAN_FRONTEND: noninteractive
+  IMAGE_TAG: 0.0.1
+
+jobs:
+  build_image:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login docker
+        run: |
+          echo ${{ env.REGISTRY_TOKEN }} | docker login ${{ env.IMAGE_REGISTRY }} -u ${{ env.REGISTRY_USER }} --password-stdin
+
+      - name: docker build
+        run: |
+          bash upload.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.git_tag }} data.txt
+
+      - name: Push docker image
+        run: |
+          docker push ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.git_tag }}
