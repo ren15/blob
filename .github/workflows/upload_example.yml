@@ -35,5 +35,6 @@ jobs:
           cd empty_dir
           ls
           podman pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          podman cp ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}:/blob/data.txt .
+          podman create --name temp ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} 
+          podman cp temp:/blob/data.txt .
           ls 
