@@ -34,7 +34,5 @@ jobs:
           mkdir empty_dir
           cd empty_dir
           ls
-          podman pull ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          podman create --name temp ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} 
-          podman cp temp:/blob/data.txt .
+          bash ../download.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
           ls 
