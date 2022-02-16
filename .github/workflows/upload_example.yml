@@ -23,8 +23,8 @@ jobs:
 
       - name: docker build
         run: |
-          bash upload.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.git_tag }} data.txt
+          bash upload.sh ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
 
       - name: Push docker image
         run: |
-          docker push ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.git_tag }}
+          docker push ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
