@@ -17,10 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup skopeo
-        run: |
-          brew install skopeo
-
       - name: Login docker
         run: |
           echo ${{ env.REGISTRY_TOKEN }} | docker login ${{ env.IMAGE_REGISTRY }} -u ${{ env.REGISTRY_USER }} --password-stdin
@@ -35,8 +31,9 @@ jobs:
 
       - name: Test docker pull
         run: |
+          podman run docker://quay.io/skopeo/stable:latest copy --help
           mkdir empty_dir
           cd empty_dir
           ls 
-          skopeo copy ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} docker_image_pulled
+          podman run docker://quay.io/skopeo/stable:latest copy ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} docker_image_pulled
           ls 
