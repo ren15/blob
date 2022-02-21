@@ -36,13 +36,13 @@ jobs:
       - name: one-liner upload
         run: |
           echo one_liner > data.txt
-          curl -fsSL https://raw.githubusercontent.com/ren15/blob/HEAD/upload.sh | bash - ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
+          curl -fsSL https://raw.githubusercontent.com/ren15/blob/HEAD/upload.sh | bash -s ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
 
       - name: one-liner download
         run: |
           mkdir empty_dir
           cd empty_dir
-          curl -fsSL https://raw.githubusercontent.com/ren15/blob/HEAD/download.sh | bash - ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
+          curl -fsSL https://raw.githubusercontent.com/ren15/blob/HEAD/download.sh | bash -s ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
           cat data.txt
           cd .. && rm -rf empty_dir
 
