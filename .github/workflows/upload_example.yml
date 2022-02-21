@@ -23,7 +23,7 @@ jobs:
 
       - name: Generate random file
         run: |
-          echo $((1 + $RANDOM % 10)) > data.txt
+          echo $((1 + $RANDOM % 100)) > data.txt
           cat data.txt
 
       - name: docker upload
@@ -40,7 +40,6 @@ jobs:
 
       - name: one-liner upload
         run: |
-          echo one_liner > data.txt
           curl -fsSL https://raw.githubusercontent.com/ren15/blob/HEAD/upload.sh | bash -s ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} data.txt
 
       - name: one-liner download
