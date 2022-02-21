@@ -13,7 +13,7 @@ COPY $2 /blob/
 EOL
 
 docker build -t $1 tmpDocker
-docker push $2
-docker rmi $2
+docker push $1
+docker rmi $1
 
 rm -rf tmpDocker
